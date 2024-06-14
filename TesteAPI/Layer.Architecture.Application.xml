@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Layer.Architecture.Application</name>
+    </assembly>
+    <members>
+        <member name="T:Layer.Architecture.Application.Controllers.RotaController">
+            <summary>
+            Manutencao de rota
+            </summary>
+        </member>
+        <member name="M:Layer.Architecture.Application.Controllers.RotaController.#ctor(Layer.Architecture.Service.Interface.IRotaService)">
+            <summary>
+            Manutencao de rota
+            </summary>
+            <param name="rotaService"></param>
+        </member>
+        <member name="M:Layer.Architecture.Application.Controllers.RotaController.Create(Layer.Architecture.Domain.ViewModel.Rota.CreateRotaVM)">
+            <summary>
+            Criar nova rota
+            </summary>
+            <param name="rota"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Layer.Architecture.Application.Controllers.RotaController.Update(Layer.Architecture.Domain.ViewModel.Rota.RotaVM)">
+            <summary>
+            Atualizar nova rota
+            </summary>
+            <param name="rota"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Layer.Architecture.Application.Controllers.RotaController.Delete(System.Int32)">
+            <summary>
+            Escluir uma rota
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Layer.Architecture.Application.Controllers.RotaController.Get">
+            <summary>
+            Busca todos Rotas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Layer.Architecture.Application.Controllers.RotaController.Get(System.Int32)">
+            <summary>
+            Busca rota por Id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Layer.Architecture.Application.Controllers.RotaController.getCalculoRota(System.String,System.String)">
+            <summary>
+            Calcula rota mais barata
+            </summary>
+            <param name="origin"></param>
+            <param name="destination"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Layer.Architecture.Application.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Layer.Architecture.Application.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
