@@ -1,0 +1,187 @@
+<div>
+  <!-- Toolbar -->
+  <div class="toolbar" role="banner">
+    <img
+      width="40"
+      alt="Angular Logo"
+      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
+    />
+    <span>Bem vindo</span>
+  </div>
+
+  <div class="content" role="main">
+    <div class="container">
+      <h1>Gerenciamento de Rotas</h1>
+      <div>
+        <h2>Routes</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Origin</th>
+              <th>Destination</th>
+              <th>Cost</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let route of routes">
+              <td>{{ route.origin }}</td>
+              <td>{{ route.destination }}</td>
+              <td>{{ route.cost }}</td>
+              <td>
+                <button
+                  class="btn btn-primary"
+                  (click)="update(route.id)"
+                  data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"
+                >
+                  Edit
+                </button>
+                <button (click)="deleteRoute(route.id)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button
+          class="btn btn-primary"
+          (click)="create()"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Add Route
+        </button>
+      </div>
+
+      <div *ngIf="!isEditOrNew">
+        <h1>Busca de Rota Mais Barata</h1>
+
+        <!-- Highlight Card -->
+        <div>
+          
+          <form (ngSubmit)="getCheapestRoute()">
+            <div>
+              <label for="origin">Origin</label>
+              <input
+                id="origin"
+                [(ngModel)]="route.origin"
+                name="origin"
+                required
+              />
+            </div>
+            <div>
+              <label for="destination">Destination</label>
+              <input
+                id="destination"
+                [(ngModel)]="route.destination"
+                name="destination"
+                required
+              />
+            </div>
+            <div>
+              <label for="cost">Melhor rota</label>
+              {{ route.bestRoute }}
+            </div>
+            <button type="submit">Buscar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+
+    <div
+      *ngIf="isEditOrNew"
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Rota</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h2>{{ isEditMode ? "Edit Route" : "Add Route" }}</h2>
+            <form (ngSubmit)="saveRoute()">
+              <div>
+                <div *ngIf="isEditMode">
+                  <p>
+                    <strong>ID:</strong>
+                    {{ route.origin }}
+                  </p>
+                </div>
+                <p>
+                  <strong>Origem:</strong>
+                  <input
+                    id="origin"
+                    [(ngModel)]="route.origin"
+                    name="origin"
+                    required
+                  />
+                </p>
+                <p>
+                  <strong>Destino:</strong>
+                  <input
+                    id="destination"
+                    [(ngModel)]="route.destination"
+                    name="destination"
+                    required
+                  />
+                </p>
+
+                <p>
+                  <strong>Valor:</strong>
+                  <input
+                    id="cost"
+                    [(ngModel)]="route.cost"
+                    name="cost"
+                    required
+                  />
+                </p>
+              </div>
+
+              <button type="submit">Salvar</button>
+              <button
+                type="button"
+                (click)="cancelar()"
+                class="btn btn-primary"
+              >
+                Cancelar
+              </button>
+            </form>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer></footer>
+
+  <svg
+    id="clouds"
+    xmlns="http://www.w3.org/2000/svg"
+    width="2611.084"
+    height="485.677"
+    viewBox="0 0 2611.084 485.677"
+  >
+    <title>Gray Clouds Background</title>
+    <path
+      id="Path_39"
+      data-name="Path 39"
+      d="M2379.709,863.793c10-93-77-171-168-149-52-114-225-105-264,15-75,3-140,59-152,133-30,2.83-66.725,9.829-93.5,26.25-26.771-16.421-63.5-23.42-93.5-26.25-12-74-77-130-152-133-39-120-212-129-264-15-54.084-13.075-106.753,9.173-138.488,48.9-31.734-39.726-84.4-61.974-138.487-48.9-52-114-225-105-264,15a162.027,162.027,0,0,0-103.147,43.044c-30.633-45.365-87.1-72.091-145.206-58.044-52-114-225-105-264,15-75,3-140,59-152,133-53,5-127,23-130,83-2,42,35,72,70,86,49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33,61.112,8.015,113.854-5.72,150.492-29.764a165.62,165.62,0,0,0,110.861-3.236c47,94,178,113,251,33,31.385,4.116,60.563,2.495,86.487-3.311,25.924,5.806,55.1,7.427,86.488,3.311,73,80,204,61,251-33a165.625,165.625,0,0,0,120,0c51,13,108,15,157-5a147.188,147.188,0,0,0,33.5-18.694,147.217,147.217,0,0,0,33.5,18.694c49,20,106,18,157,5a165.625,165.625,0,0,0,120,0c47,94,178,113,251,33C2446.709,1093.793,2554.709,922.793,2379.709,863.793Z"
+      transform="translate(142.69 -634.312)"
+      fill="#eee"
+    />
+  </svg>
+</div>
+
+<router-outlet> </router-outlet>
