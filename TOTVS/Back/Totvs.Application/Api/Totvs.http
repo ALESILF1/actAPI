@@ -1,0 +1,6 @@
+@Alesilf.Totvs_HostAddress = http://localhost:5053
+
+GET {{Alesilf.Totvs_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

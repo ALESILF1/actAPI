@@ -1,0 +1,93 @@
+.title-crud {
+  display: flex;
+  justify-content: center;
+}
+
+.container-md {
+  background-color: #f4faff;
+}
+
+.cadastro {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.fs-4 {
+  font-size: 30px;
+  color: #80b3ff;
+}
+
+.Cadastro-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Cadastro-box label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.Cadastro-box input {
+  background-color: #effaff;
+  border-radius: 15px;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  max-width: 300px;
+  height: 40px;
+  padding-left: 15px;
+  border: solid 1px;
+  border-color: #687eff;
+}
+
+.Cadastro-box textarea {
+  background-color: #effaff;
+  border-radius: 15px;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  max-width: 300px;
+  height: 150px;
+  padding-left: 15px;
+  border: solid 1px;
+  border-color: #687eff;
+  resize: none;
+}
+
+.preco-box {
+  position: relative;
+}
+
+.preco-box::before {
+  content: "R$: ";
+  position: absolute;
+  left: 10px;
+  top: 38px;
+  color: #444;
+  font-size: 14px;
+}
+
+.preco-box input {
+  padding-left: 35px;
+}
+
+.form-control {
+  background-color: #effaff;
+  border-radius: 15px;
+  border: none;
+  width: 250px;
+  height: 40px;
+  padding-left: 15px;
+  border: solid 1px;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 300px;
+}

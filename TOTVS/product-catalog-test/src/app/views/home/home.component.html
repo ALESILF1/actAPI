@@ -1,0 +1,65 @@
+<app-header></app-header>
+<div class="container">
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+  </div>
+  <div class="title-crud"><h1>Teste de Grud</h1></div>
+  <div class="table-responsive transparent">
+    <table class="table" style="width: 100%">
+      <thead>
+        <tr class="center-align">
+
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Estoque</th>
+          <th>Categoria</th>
+          <th>Descricao</th>
+          <th>Data De Criacao</th>
+          <th>Data De Atualizacao</th>
+          <th colspan="2">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let Produto of produtos; let i = index"
+          class="center-align"
+        >
+          <td>{{ Produto.nome }}</td>
+          <td>R$: {{ Produto.preco }}</td>
+          <td>{{ Produto.estoque }}</td>
+          <td>{{ Produto.categoria }}</td>
+          <td class="tabela-descricao">
+            <span class="tooltip-text">
+              {{ Produto.descricao | slice : 0 : 50 }}...
+              <span class="tooltip-content">{{ Produto.descricao }}</span>
+            </span>
+          </td>
+          <td>{{ Produto.dataCriacao | date : "dd/MM/yyyy" }}</td>
+          <td>{{ Produto.dataAtualizacao | date : "dd/MM/yyyy" }}</td>
+          <td>
+            <button
+              (click)="confirmDelete(Produto.id, Produto.nome)"
+              class="btn btn-outline-danger"
+              title="Excluir produto"
+            >
+              🗑️ Excluir
+            </button>
+
+            <button
+              [routerLink]="['Editar-Produto/', Produto.id]"
+              class="btn btn-outline-primary"
+              title="Editar produto"
+            >
+              ✏️ Editar
+            </button>
+          </td>
+        </tr>
+        <tr *ngIf="produtos.length === 0" class="center-align">
+          <td colspan="10">Nenhum Produto encontrado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

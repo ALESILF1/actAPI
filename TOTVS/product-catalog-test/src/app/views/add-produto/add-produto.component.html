@@ -1,0 +1,75 @@
+<app-header></app-header>
+<div class="container-md rounded shadow-lg">
+  <div class="title-crud">
+    <h1>Adicionar Produtoe</h1>
+  </div>
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Carregando...</span>
+    </div>
+  </div>
+  <div class="container-after">
+    <div class="cadastro">
+      <div class="Cadastro-box">
+        <form (ngSubmit)="addProduto()">
+          <div class="Cadastro-box">
+            <label for="name">Nome:</label>
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="NovoProduto.nome"
+              name="name"
+              placeholder="NOME"
+            />
+          </div>
+          <div class="Cadastro-box">
+            <label for="estoque">estoque:</label>
+            <input
+              type="text"
+              id="estoque"
+              [(ngModel)]="NovoProduto.estoque"
+              name="estoque"
+              placeholder="Estoque"
+            />
+          </div>
+          <div class="Cadastro-box">
+            <label for="Categoria">Categoria:</label>
+            <input
+              type="text"
+              id="categoria"
+              [(ngModel)]="NovoProduto.categoria"
+              placeholder="Categoria"
+              name="categoria"
+              required
+            />
+          </div>
+          <div class="Cadastro-box preco-box">
+            <label for="preco">Preço:</label>
+            <input
+              type="text"
+              id="preco"
+              [(ngModel)]="NovoProduto.preco"
+              placeholder="0,00"
+              name="preco"
+              required
+            />
+          </div>
+          <div class="Cadastro-box">
+            <label for="descricao">descricao:</label>
+            <textarea
+              id="descricao"
+              [(ngModel)]="NovoProduto.descricao"
+              name="descricao"
+              required
+              placeholder="Descrição"
+              rows="4"
+              maxlength="500"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
